@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
 import AuthProvider from "@/components/auth-provider";
 import ThemeProvider from "@/components/theme-provider";
+import Footer from "@/components/footer";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 
@@ -30,10 +31,11 @@ export default function RootLayout({ children }) {
             <AuthProvider>
               <Header />
               {children}
-              <Toaster />
+              <Footer />
             </AuthProvider>
           </ThemeProvider>
         </main>
+        <Toaster />
       </body>
     </html>
   );
