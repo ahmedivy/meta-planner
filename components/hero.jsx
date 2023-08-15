@@ -32,10 +32,10 @@ export default function Hero() {
       </div>
       <div className="flex gap-4 m-auto flex-col md:flex-row">
         <Button className="font-semibold text-md" size="lg">
-          Logout
+          Learn More
         </Button>
         <Button
-          className={`text-background bg-gradient-to-r ${gradients[currIndex]} transition-all duration-500 ease-in-out font-semibold text-md hover:opacity-70`}
+          className={`text-white bg-gradient-to-r ${gradients[currIndex]} transition-all duration-500 ease-in-out font-semibold text-md hover:opacity-70`}
           size="lg"
         >
           Get a Demo
