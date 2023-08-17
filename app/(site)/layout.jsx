@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/app/globals.css";
 import { Nunito_Sans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
