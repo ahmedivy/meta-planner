@@ -3,24 +3,24 @@
 import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 import {
   Card,
+  CardTitle,
+  CardHeader,
   CardContent,
   CardDescription,
-  CardHeader,
-  CardTitle,
 } from "./ui/card";
-import { ReloadIcon } from "@radix-ui/react-icons";
 
 export function LoginCard() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -41,6 +41,8 @@ export function LoginCard() {
       });
 
       setLoading(false);
+
+      console.log(result);
 
       if (result?.error) {
         setError("Sorry, password not correct.");
@@ -95,13 +97,20 @@ export function LoginCard() {
             )}
 
             <p className="text-center text-md text-muted-foreground">
-                Forgot your password?{" "}
-                <Link href="/forgot-password" className="underline text-foreground">
-                    Reset
-                </Link>
+              Forgot your password?{" "}
+              <Link
+                href="/forgot-password"
+                className="underline text-foreground"
+              >
+                Reset
+              </Link>
             </p>
 
-            <Button className="w-full font-semibold" disabled={isLoading} type="submit">
+            <Button
+              className="w-full font-semibold"
+              disabled={isLoading}
+              type="submit"
+            >
               {isLoading && (
                 <ReloadIcon className="animate-spin h-4 w-4 mr-2" />
               )}

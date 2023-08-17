@@ -2,11 +2,15 @@ import "@/app/globals.css";
 import { Nunito_Sans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
-import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
-import AuthProvider from "@/components/auth-provider";
-import ThemeProvider from "@/components/theme-provider";
+import PortalHeader from "@/components/portal-header";
+import AuthProvider from "@/components/providers/auth-provider";
+import ThemeProvider from "@/components/providers/theme-provider";
+import UserProvider from "@/components/providers/user-provider";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 
@@ -21,7 +25,13 @@ export const metadata = {
   ],
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -29,9 +39,11 @@ export default function RootLayout({ children }) {
         <main className="flex min-h-screen flex-col items-center justify-between container">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <AuthProvider>
-              <Header />
-              {children}
-              <Footer />
+              <UserProvider session={session}>
+                <PortalHeader />
+                {children}
+                <Footer />
+              </UserProvider>
             </AuthProvider>
           </ThemeProvider>
         </main>

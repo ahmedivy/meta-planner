@@ -1,7 +1,10 @@
 "use client";
 
-import { Button } from "./ui/button";
+import { signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
+
+import { Button } from "./ui/button";
 import Headline from "@/components/headline";
 
 const words = ["Trade.", "Manage.", "Excel."];
@@ -37,8 +40,15 @@ export default function Hero() {
         <Button
           className={`text-white bg-gradient-to-r ${gradients[currIndex]} transition-all duration-500 ease-in-out font-semibold text-md hover:opacity-70`}
           size="lg"
+          onClick={() => {
+            signIn("credentials", {
+              email: "demoaccount@gmail.com",
+              password: "demo1234",
+              callbackUrl: "/dashboard",
+            });
+          }}
         >
-          Get a Demo
+          Login with Demo Account
         </Button>
       </div>
     </div>

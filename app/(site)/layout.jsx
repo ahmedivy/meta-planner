@@ -3,10 +3,10 @@ import { Nunito_Sans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import Header from "@/components/header";
-import { Toaster } from "@/components/ui/toaster";
-import AuthProvider from "@/components/auth-provider";
-import ThemeProvider from "@/components/theme-provider";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/toaster";
+import AuthProvider from "@/components/providers/auth-provider";
+import ThemeProvider from "@/components/providers/theme-provider";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 
