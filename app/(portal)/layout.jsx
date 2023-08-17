@@ -11,6 +11,7 @@ import UserProvider from "@/components/providers/user-provider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import Sidebar from "@/components/sidebar";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 
@@ -41,7 +42,10 @@ export default async function RootLayout({ children }) {
             <AuthProvider>
               <UserProvider session={session}>
                 <PortalHeader />
-                {children}
+                <div className="w-full h-full flex flex-row flex-grow">
+                  <Sidebar />
+                  {children}
+                </div>
                 <Footer />
               </UserProvider>
             </AuthProvider>

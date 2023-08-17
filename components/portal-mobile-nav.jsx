@@ -1,6 +1,7 @@
 import { CgMenuLeftAlt } from "react-icons/cg";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import Sidebar from "./sidebar";
 
 function PortalMobileNav() {
   return (
@@ -11,7 +12,7 @@ function PortalMobileNav() {
         </div>
       </SheetTrigger>
       <SheetContent side="left" className="w-[300px]">
-        
+        <Sidebar className="flex flex-col mx-0 px-2" mobile={true}/>
       </SheetContent>
     </Sheet>
   );
