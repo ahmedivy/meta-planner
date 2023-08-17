@@ -1,9 +1,7 @@
 import Link from "next/link";
-
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
+
 import Nav from "./nav";
-import { Button } from "./ui/button";
 import MobileNav from "./mobile-nav";
 import AuthButtons from "./auth-buttons";
 
