@@ -24,7 +24,7 @@ async function PortalHeader() {
       </Link>
 
       {/* Avatar */}
-      <div className="ml-auto mt-2">
+      <div className="ml-auto mt-1">
         <UserAvatar name={name} email={email} image={image} />
       </div>
 

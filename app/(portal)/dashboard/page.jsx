@@ -1,9 +1,12 @@
+import AccountCard from "@/components/account-card";
 
 async function Page() {
 
   return (
-    <main className="p-6">
-      <h1>Dashboard</h1>
+    <main className="w-full lg:pl-6 pt-4 flex flex-col gap-4">
+      <h1 className="text-3xl font-black">Dashboard</h1>
+
+      <AccountCard />
     </main>
   );
 }

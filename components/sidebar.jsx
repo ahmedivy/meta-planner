@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
+import { signOut } from "next-auth/react";
 import { FaHistory } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { MdSpaceDashboard } from "react-icons/md";
@@ -9,9 +10,8 @@ import { BsFillBarChartFill } from "react-icons/bs";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
 
 import { cn } from "@/lib/utils";
-import SidebarItem from "./sidebar-item";
 import { Button } from "./ui/button";
-import { signOut } from "next-auth/react";
+import SidebarItem from "./sidebar-item";
 
 function Sidebar({ className = "", mobile = false }) {
   const path = usePathname();
@@ -44,7 +44,7 @@ function Sidebar({ className = "", mobile = false }) {
   return (
     <nav
       className={cn(
-        "hidden w-[240px] h-full lg:flex lg:flex-col gap-2 px-2 py-4 ml-3",
+        "hidden w-[280px] h-full lg:flex lg:flex-col gap-2 px-2 py-4 ml-3",
         className
       )}
     >

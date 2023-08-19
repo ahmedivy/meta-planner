@@ -13,6 +13,7 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Sidebar from "@/components/sidebar";
 import { Separator } from "@/components/ui/separator";
+import ColorsClassesTw from "@/components/dynamic-cn";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 
@@ -44,11 +45,12 @@ export default async function RootLayout({ children }) {
               <UserProvider session={session}>
                 <PortalHeader />
                 <Separator />
-                <div className="w-full h-full flex flex-row flex-grow container">
+                <div className="w-full h-full flex flex-row flex-grow container mt-3">
                   <Sidebar />
                   {children}
                 </div>
                 <Footer />
+                <ColorsClassesTw />
               </UserProvider>
             </AuthProvider>
           </ThemeProvider>

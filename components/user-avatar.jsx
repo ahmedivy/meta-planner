@@ -21,7 +21,7 @@ function UserAvatar({ name, email, image }) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-10 w-10">
+          <Avatar className="h-8 w-8">
             <AvatarImage src={image || getAvatar(name)} alt={name} />
             <AvatarFallback></AvatarFallback>
           </Avatar>
