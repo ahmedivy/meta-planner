@@ -1,16 +1,16 @@
 [tool.poetry]
-name = "meta-planner"
+name = "metaplanner-server"
 version = "0.1.0"
-description = "Server for Meta Planner"
+description = ""
 authors = ["ahmed <ahmadabdullah4919@gmail.com>"]
-license = "MIT"
 readme = "README.md"
-packages = [{include = "meta_planner"}]
+packages = [{include = "metaplanner_server"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.101.1"
-uvicorn = {extras = ["standard"], version = "^0.23.2"}
+metaapi-cloud-sdk = "^21.3.0"
+django = "^4.2.4"
+djangorestframework = "^3.14.0"
 
 
 [build-system]
