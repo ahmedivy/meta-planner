@@ -11,7 +11,7 @@ async function PortalHeader() {
   const { name, email, image } = session?.user;
 
   return (
-    <header className="flex h-16 w-full items-center gap-6">
+    <header className="flex h-16 w-full items-center gap-6 container">
       {/* <MobileNav /> */}
       <PortalMobileNav />
 

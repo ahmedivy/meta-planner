@@ -2,9 +2,9 @@
 async function Page() {
 
   return (
-    <div>
-      
-    </div>
+    <main className="p-6">
+      <h1>Dashboard</h1>
+    </main>
   );
 }
 

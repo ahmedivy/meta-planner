@@ -12,6 +12,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Sidebar from "@/components/sidebar";
+import { Separator } from "@/components/ui/separator";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 
@@ -37,12 +38,13 @@ export default async function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={cn(`min-h-screen`, font.className)}>
-        <main className="flex min-h-screen flex-col items-center justify-between container">
+        <main className="flex min-h-screen flex-col items-center justify-between">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <AuthProvider>
               <UserProvider session={session}>
                 <PortalHeader />
-                <div className="w-full h-full flex flex-row flex-grow">
+                <Separator />
+                <div className="w-full h-full flex flex-row flex-grow container">
                   <Sidebar />
                   {children}
                 </div>
