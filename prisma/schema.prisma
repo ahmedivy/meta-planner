@@ -6,30 +6,18 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
-}
-
-model UserSubscription {
-  id                     String    @id @default(cuid())
-  userId                 String    @unique
-  stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
-  stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
-  stripePriceId          String?   @map(name: "stripe_price_id")
-  stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
-  user                   User      @relation(fields: [userId], references: [id])
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
 }
 
 model User {
-  id               String            @id @default(cuid())
-  email            String            @unique
-  name             String?
-  password         String
-  image            String?
-  createdAt        DateTime          @default(now())
-  updatedAt        DateTime          @updatedAt
-  stripeCustomerId String?           @unique
-  UserSubscription UserSubscription?
-  accountId        String?           @unique
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  name      String?
+  password  String
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  accountId String?  @unique
+  symbols   String[]
 }
