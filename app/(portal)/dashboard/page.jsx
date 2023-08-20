@@ -24,7 +24,7 @@ async function Page() {
 
       <div className="flex flex-col gap-8 py-4 w-full">
         {/* Account Name, Broker and Status */}
-        <div className="flex items-center">
+        <div className="flex lg:items-center flex-col lg:flex-row gap-3">
           <div className="flex-grow">
             <h1 className="text-xl font-bold">{account.name}</h1>
             <h3 className="text-muted-foreground">Server: {account.server}</h3>
