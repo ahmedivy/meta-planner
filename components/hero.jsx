@@ -42,8 +42,8 @@ export default function Hero() {
           size="lg"
           onClick={() => {
             signIn("credentials", {
-              email: "demoaccount@gmail.com",
-              password: "demo1234",
+              email: "demo@meta-planner.com",
+              password: "demo@1234",
               callbackUrl: "/dashboard",
             });
           }}
