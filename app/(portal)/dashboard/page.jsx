@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 
 async function getData() {
   const session = await getServerSession(authOptions);
-  const account = await getAccountInfo(session.user.accountId);
+  const account = await getAccountInfo(session.user.accountId, true);
   return {
     user: session.user,
     account,

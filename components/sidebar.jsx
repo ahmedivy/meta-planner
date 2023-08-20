@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { signOut } from "next-auth/react";
 import { FaHistory } from "react-icons/fa";
+import { FaChartLine } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { MdSpaceDashboard } from "react-icons/md";
 import { BsFillBarChartFill } from "react-icons/bs";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
+
 
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
@@ -23,6 +25,12 @@ function Sidebar({ className = "", mobile = false }) {
         path: "/dashboard",
         icon: MdSpaceDashboard,
         active: path === "/dashboard",
+      },
+      {
+        name: "Quotes",
+        path: "/quotes",
+        icon: FaChartLine,
+        active: path.startsWith("/quotes"),
       },
       {
         name: "Trades",
