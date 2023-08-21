@@ -18,11 +18,22 @@ async function getData() {
     },
   });
 
+  return symbols
+    .map((symbol) => ({
+      name: symbol,
+      isOn: user.symbols.includes(symbol),
+    }))
+    .sort((a, b) => {
+      if (a.isOn === b.isOn) {
+        return 0;
+      }
 
-  return symbols.map((symbol) => ({
-    name: symbol,
-    isOn: user.symbols.includes(symbol),
-  }));
+      if (a.isOn) {
+        return -1;
+      }
+
+      return 1;
+    });
 }
 
 async function Page() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { Switch } from "./ui/switch";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 function SymbolCard({ name, isOn = false, onToggle = () => {} }) {
   return (

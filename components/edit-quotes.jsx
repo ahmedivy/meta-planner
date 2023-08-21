@@ -8,16 +8,18 @@ import { ScrollArea } from "./ui/scroll-area";
 import { useDebounce } from "@/lib/hooks/useDebounce";
 import { useSession } from "next-auth/react";
 import { useToast } from "./ui/use-toast";
+import { useRouter } from "next/navigation";
 
 function EditQuotes({ availableSymbols }) {
   const [search, setSearch] = useState("");
   const [symbols, setSymbols] = useState(availableSymbols);
   const [searchResults, setSearchResults] = useState(symbols);
 
+  const router = useRouter();
   const { toast } = useToast();
   const { data: session } = useSession();
 
-  const debouncedSearch = useDebounce(search);
+  const debouncedSearch = useDebounce(search, 0);
 
   useEffect(() => {
     if (!debouncedSearch) {

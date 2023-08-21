@@ -12,7 +12,7 @@ async function Page() {
 
       <Skeleton className="w-full h-10" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4 pt-5">
         {Array(30)
           .fill()
           .map((_, i) => (
