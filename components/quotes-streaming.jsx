@@ -18,7 +18,7 @@ function QuotesStreaming({ user, symbols }) {
 
   return (
     <>
-      {prices.length === 0 ? (
+      { Object.keys(prices).length === 0 ? (
         <div className="flex flex-col items-center justify-center w-full h-full">
           <StatusBadge status="Connecting" />
         </div>
