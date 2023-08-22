@@ -1,30 +1,24 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
 import { Button } from "@/components/ui/button";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import prisma from "@/lib/db";
+import QuotesRPC from "@/components/quotes-rpc";
+import { getSymbolsPrices } from "@/lib/meta-api/account";
 
-const QuotesStreaming = dynamic(() => import("@/components/quotes-streaming"), {
-  ssr: false,
-});
-
-const getData = async (id) => {
+async function getData(userId) {
   const user = await prisma.user.findUnique({
-    where: {
-      id,
-    },
-    select: {
-      symbols: true,
-    },
+    where: { id: userId },
+    select: { symbols: true, accountId: true },
   });
-  return user.symbols;
-};
+  const prices = await getSymbolsPrices(user.symbols, user.accountId);
+  return prices;
+}
 
 async function Page() {
   const session = await getServerSession(authOptions);
-  const symbols = await getData(session.user.id);
+  const prices = await getData(session.user.id);
 
   return (
     <main className="w-full lg:pl-6 pt-4 flex flex-col gap-4">
@@ -40,7 +34,8 @@ async function Page() {
         </Button>
       </div>
 
-      <QuotesStreaming user={session.user} symbols={symbols} />
+      <QuotesRPC prices={prices} />
+      {/* <pre>{JSON.stringify(prices, null, 2)}</pre> */}
     </main>
   );
 }
