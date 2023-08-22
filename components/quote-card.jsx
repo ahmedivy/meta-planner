@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Card, CardContent } from "./ui/card";
 
 function Price({ price, color }) {
@@ -10,11 +11,11 @@ function Price({ price, color }) {
   const first = priceString.slice(0, -3);
 
   return (
-    <p className={`text-md lg:text-2xl font-bold ${color}`}>
+    <p className={`text-md lg:text-xl font-semibold ${color}`}>
       <span>{first}</span>
-      <span className="text-xl lg:text-4xl">
+      <span className="text-lg lg:text-2xl">
         {second}
-        <sup className="text-md lg:text-2xl">{third}</sup>
+        <sup className="text-md lg:text-xl">{third}</sup>
       </span>
     </p>
   );
@@ -31,15 +32,19 @@ function QuoteCard({
   const bidColor = bidPriceIncreased ? "text-blue-500" : "text-red-500";
 
   return (
-    <Card className="shadow-none rounded-lg border-0 lg:border">
-      <CardContent className="w-full flex justify-between py-6 lg:py-8 px-0 lg:px-8 items-center">
-        <p className="text-xl lg:text-3xl font-bold lg:font-black">{symbol}</p>
-        <div className="flex gap-6 items-center">
-          <Price price={ask} color={askColor} />
-          <Price price={bid} color={bidColor} />
-        </div>
-      </CardContent>
-    </Card>
+    <Link href={`/trades/${symbol}`} passHref>
+      <Card className="shadow-none rounded-lg border-0 lg:border lg:hover:bg-accent cursor-pointer">
+        <CardContent className="w-full flex justify-between py-6 lg:py-8 px-0 lg:px-8 items-center">
+          <p className="text-lg lg:text-2xl font-semibold lg:font-bold">
+            {symbol}
+          </p>
+          <div className="flex gap-6 items-center">
+            <Price price={ask} color={askColor} />
+            <Price price={bid} color={bidColor} />
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
 

@@ -26,7 +26,7 @@ async function Page() {
         <div className="flex flex-col gap-3">
           <h1 className="text-3xl font-black">Quotes</h1>
           <p className="text-muted-foreground text-xl">
-            Symbols you are tracking and their real time stats
+            Symbols you are tracking and their prices
           </p>
         </div>
         <Button asChild className="font-bold" size="lg">
