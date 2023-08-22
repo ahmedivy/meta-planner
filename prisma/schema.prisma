@@ -23,12 +23,14 @@ model User {
 }
 
 model Symbol {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  name       String    @unique
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  ask        Float?
-  bid        Float?
-  time       DateTime?
-  brokerTime DateTime?
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  name            String    @unique
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  ask             Float?
+  bid             Float?
+  time            DateTime?
+  brokerTime      DateTime?
+  profitTickValue Float?
+  lossTickValue   Float?
 }
