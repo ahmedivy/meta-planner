@@ -10,11 +10,11 @@ function Price({ price, color }) {
   const first = priceString.slice(0, -3);
 
   return (
-    <p className={`text-md lg:text-3xl font-bold ${color}`}>
+    <p className={`text-md lg:text-2xl font-bold ${color}`}>
       <span>{first}</span>
-      <span className="text-xl lg:text-5xl">
+      <span className="text-xl lg:text-4xl">
         {second}
-        <sup className="text-xl lg:text-3xl">{third}</sup>
+        <sup className="text-md lg:text-2xl">{third}</sup>
       </span>
     </p>
   );
