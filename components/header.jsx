@@ -7,7 +7,7 @@ import AuthButtons from "./auth-buttons";
 
 function Header() {
   return (
-    <header className="flex h-16 w-full items-center gap-6 container">
+    <header className="flex h-16 w-full items-center gap-6">
       {/* Logo */}
       <Link href="/">
         <div className="flex gap-2 items-center">
