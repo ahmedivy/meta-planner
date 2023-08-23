@@ -32,7 +32,7 @@ function QuoteCard({
   const bidColor = bidPriceIncreased ? "text-blue-500" : "text-red-500";
 
   return (
-    <Link href={`/trades/${symbol}`} passHref>
+    <Link href={`/quotes/${symbol}`} passHref>
       <Card className="shadow-none rounded-lg border-0 lg:border lg:hover:bg-accent cursor-pointer">
         <CardContent className="w-full flex justify-between py-6 lg:py-8 px-0 lg:px-8 items-center">
           <p className="text-lg lg:text-2xl font-semibold lg:font-bold">
