@@ -11,15 +11,18 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String   @unique
-  name      String?
-  password  String
-  image     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  accountId String?  @unique
-  symbols   String[]
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  email              String   @unique
+  name               String?
+  password           String
+  image              String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  accountId          String?  @unique
+  symbols            String[]
+  dailyDrawdownLimit Float?
+  maxLoseLimit       Float?
+  maxExposureLimit   Float?
 }
 
 model Symbol {
