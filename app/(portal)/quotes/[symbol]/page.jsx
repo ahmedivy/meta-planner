@@ -4,16 +4,8 @@ import { HiPlus } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
-import prisma from "@/lib/db";
 import { getSymbolDetails } from "@/lib/meta-api/account";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableRow,
-} from "@/components/ui/table";
-import { timeSince } from "@/lib/utils";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import TimeSince from "@/components/time-since";
 
 async function Page({ params }) {

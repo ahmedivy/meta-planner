@@ -4,8 +4,12 @@ import { TbTriangleInvertedFilled } from "react-icons/tb";
 import Nav from "./nav";
 import MobileNav from "./mobile-nav";
 import AuthButtons from "./auth-buttons";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
-function Header() {
+async function Header() {
+  const session = await getServerSession(authOptions);
+
   return (
     <header className="flex h-16 w-full items-center gap-6">
       {/* Logo */}
@@ -20,10 +24,10 @@ function Header() {
       <Nav />
 
       {/* Auth Buttons */}
-      <AuthButtons />
+      <AuthButtons session={session} />
 
       {/* Mobile Menu */}
-      <MobileNav />
+      <MobileNav session = {session}/>
     </header>
   );
 }
