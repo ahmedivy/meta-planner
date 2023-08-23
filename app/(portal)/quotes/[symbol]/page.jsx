@@ -14,6 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { timeSince } from "@/lib/utils";
+import TimeSince from "@/components/time-since";
 
 async function Page({ params }) {
   const { symbol } = params;
@@ -85,7 +86,7 @@ async function Page({ params }) {
       </div>
 
       <Table>
-        <TableCaption>Updated {timeSince(data.time)} ago</TableCaption>
+        <TimeSince date={data.time} />
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>

@@ -14,6 +14,7 @@ import { TbTriangleInvertedFilled } from "react-icons/tb";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import SidebarItem from "./sidebar-item";
+import { CgPathCrop } from "react-icons/cg";
 
 function Sidebar({ className = "", mobile = false }) {
   const path = usePathname();
@@ -45,8 +46,7 @@ function Sidebar({ className = "", mobile = false }) {
         active: path.startsWith("/history"),
       },
     ],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [path]
   );
 
   return (
