@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LuSettings2 } from "react-icons/lu";
 
 import { Button } from "@/components/ui/button";
 import { authOptions } from "@/lib/auth";
@@ -22,15 +23,23 @@ async function Page() {
 
   return (
     <main className="w-full lg:pl-6 pt-4 flex flex-col gap-4">
-      <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-4">
+      <div className="flex flex-row md:items-center justify-between w-full gap-4">
         <div className="flex flex-col gap-3">
           <h1 className="text-3xl font-black">Quotes</h1>
           <p className="text-muted-foreground text-xl">
             Symbols you are tracking and their prices
           </p>
         </div>
-        <Button asChild className="font-bold" size="lg">
-          <Link href="/quotes/configure">Configure Quotes</Link>
+        <Button asChild className="font-bold hidden lg:flex" size="lg">
+          <Link href="/quotes/configure">
+            <LuSettings2 className="h-5 w-5 mr-2" />
+            Configure Quotes
+          </Link>
+        </Button>
+        <Button size="icon" asChild className="lg:hidden">
+          <Link href="/quotes/configure">
+            <LuSettings2 className="h-5 w-5" />
+          </Link>
         </Button>
       </div>
 

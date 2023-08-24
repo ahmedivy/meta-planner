@@ -1,6 +1,7 @@
+import { getServerSession } from "next-auth";
+
 import { authOptions } from "@/lib/auth";
 import { getSymbolDetails } from "@/lib/meta-api/account";
-import { getServerSession } from "next-auth";
 
 async function Page({ params }) {
   const { symbol } = params;

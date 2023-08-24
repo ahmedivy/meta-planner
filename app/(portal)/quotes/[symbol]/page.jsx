@@ -66,14 +66,21 @@ async function Page({ params }) {
 
   return (
     <main className="w-full lg:pl-6 pt-4 flex flex-col gap-4">
-      <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-4">
+      <div className="flex flex-row md:items-center justify-between w-full gap-4">
         <div className="flex flex-col gap-3">
           <h1 className="text-3xl font-black">{symbol}</h1>
-          <p className="text-muted-foreground text-lg">{data.description}</p>
+          <p className="text-muted-foreground text-xl">{data.description}</p>
         </div>
-        <Button className="font-bold text-md" size="lg">
-          <HiPlus className="w-5 h-5 mr-2" />
-          Place Order
+        <Button asChild className="font-bold hidden lg:flex" size="lg">
+          <Link href={`/trades/${symbol}`}>
+            <HiPlus className="h-5 w-5 mr-2" />
+            Place Order
+          </Link>
+        </Button>
+        <Button size="icon" asChild className="lg:hidden">
+          <Link href={`/trades/${symbol}`}>
+            <HiPlus className="h-5 w-5" />
+          </Link>
         </Button>
       </div>
 
