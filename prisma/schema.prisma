@@ -20,9 +20,9 @@ model User {
   updatedAt          DateTime @updatedAt
   accountId          String?  @unique
   symbols            String[]
-  dailyDrawdownLimit Float?
-  maxLoseLimit       Float?
-  maxExposureLimit   Float?
+  dailyDrawdownLimit Float?   @default(10)
+  maxLossLimit       Float?   @default(5)
+  maxExposureLimit   Float?   @default(10)
 }
 
 model Symbol {

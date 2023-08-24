@@ -13,6 +13,7 @@ import ColorsClassesTw from "@/components/dynamic-cn";
 import PortalHeader from "@/components/portal-header";
 import AuthProvider from "@/components/providers/auth-provider";
 import ThemeProvider from "@/components/providers/theme-provider";
+import UserProvider from "@/components/providers/user-provider";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 
@@ -40,16 +41,22 @@ export default async function RootLayout({ children }) {
       <body className={cn(`min-h-screen`, font.className)}>
         <main className="flex min-h-screen flex-col items-center justify-between">
           <AuthProvider>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <PortalHeader />
-              <Separator />
-              <div className="w-full h-full flex flex-row flex-grow container mt-3">
-                <Sidebar />
-                {children}
-              </div>
-              <Footer />
-              <ColorsClassesTw />
-            </ThemeProvider>
+            <UserProvider session={session}>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+              >
+                <PortalHeader />
+                <Separator />
+                <div className="w-full h-full flex flex-row flex-grow container mt-3">
+                  <Sidebar />
+                  {children}
+                </div>
+                <Footer />
+                <ColorsClassesTw />
+              </ThemeProvider>
+            </UserProvider>
           </AuthProvider>
         </main>
         <Toaster />

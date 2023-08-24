@@ -1,20 +1,60 @@
 "use client";
 
+import * as z from "zod";
 import { Drawer } from "vaul";
+import { useForm } from "react-hook-form";
 import { LuSettings2 } from "react-icons/lu";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { useUser } from "@/lib/hooks/useUser";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { editMetrics } from "@/lib/actions/editMetrics";
+import { useToast } from "./ui/use-toast";
+
+const formSchema = z.object({
+  dailyDrawdownLimit: z.number().min(0, {
+    message: "Daily drawdown limit must be greater than 0",
+  }),
+  maxLossLimit: z.number().min(0, {
+    message: "Max loss must be greater than 0",
+  }),
+  maxExposureLimit: z.number().min(0, {
+    message: "Max exposure must be greater than 0",
+  }),
+});
 
 function ModelContent() {
+  const { user, revalidateUser } = useUser();
+  const { toast } = useToast();
 
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      dailyDrawdownLimit: user?.dailyDrawdownLimit,
+      maxLossLimit: user?.maxLossLimit,
+      maxExposureLimit: user?.maxExposureLimit,
+    },
+  });
 
+  function onSumit(values) {
+    editMetrics(values, user.id);
+    revalidateUser();
+
+    toast({
+      description: "Risk metrics updated successfully",
+    });
+  }
 
   return (
     <>
@@ -25,27 +65,53 @@ function ModelContent() {
         </div>
       </div>
       <div className="grid gap-4 py-4">
-        <div className="grid items-center gap-2">
-          <Label htmlFor="name" className="font-semibold">
-            Daily Drawdown Limit
-          </Label>
-          <Input id="name" className="" />
-        </div>
-        <div className="grid items-center gap-2">
-          <Label htmlFor="name" className="font-semibold">
-            Max Loss (per trade)
-          </Label>
-          <Input id="name" className="" />
-        </div>
-        <div className="grid items-center gap-2">
-          <Label htmlFor="name" className="font-semibold">
-            Max Exposure (per trade)
-          </Label>
-          <Input id="name" className="" />
-        </div>
-      </div>
-      <div className="flex ml-auto w-full justify-end">
-        <Button type="submit">Save changes</Button>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSumit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="dailyDrawdownLimit"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Daily Drawdown Limit</FormLabel>
+                  <FormControl>
+                    <Input {...field} type="number" onChange={event => field.onChange(+event.target.value)}/>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="maxLossLimit"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Max Loss</FormLabel>
+                  <FormControl>
+                    <Input {...field} type="number" onChange={event => field.onChange(+event.target.value)}/>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="maxExposureLimit"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Max Exposure</FormLabel>
+                  <FormControl>
+                    <Input {...field} type="number" onChange={event => field.onChange(+event.target.value)}/>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <Button type="submit" className="">
+              Save Changes
+            </Button>
+          </form>
+        </Form>
       </div>
     </>
   );
