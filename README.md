@@ -1,6 +1,7 @@
-# MetaPlanner
+# Meta Planner
 
-> To manage MT4 and MT5 terminals
+> To manage MT4 and MT5 terminals 💹
+> App in Develpment Phase 🚧
 
 ## Outline
 This is an outline of the features that the app would require:
